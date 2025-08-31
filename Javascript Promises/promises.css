@@ -1,0 +1,24 @@
+#button-container button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 15px;
+    background-color: darkgreen;
+    color: white;
+
+}
+
+#button-container button:hover {
+    background-color: lightgreen;
+}
+
+#promises-container button {
+    padding: 15px;
+    background-color: black;
+    color: white;
+    padding: 25px;
+    margin: 0;
+    display: block;
+    justify-self: center;
+
+}
