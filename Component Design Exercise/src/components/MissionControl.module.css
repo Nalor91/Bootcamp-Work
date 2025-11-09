@@ -1,19 +1,16 @@
-.filterContainer
-{
-  margin: 20px 0;
+h1 {
+  display: flex;
+  justify-content: center;
 }
 
-.missionContainer
-{
+.missionContainer {
   display: flex;
-  flex-grow: 1;
   justify-content: space-between;
   margin-bottom: 20px;
   padding: 20px;
-  border: 2px solid #ffffff;
+  border: 1px solid white;
 }
 
-.missionContainer:last-child
-{
-  margin-bottom: 20px;
+.filterContainer {
+  margin: 10px;
 }

@@ -6,7 +6,7 @@ import MissionAction from "./MissionAction.jsx";
 import MissionCard from "./MissionCard.jsx";
 import MissionFilter from "./MissionFilter.jsx";
 
-function MissionControl({initialMissions}) {
+function MissionControl({ initialMissions }) {
     const initialFilter = "All";
     const [missions, setMissions] = useState(initialMissions);
     const [filter, setFilter] = useState(initialFilter);
@@ -45,7 +45,7 @@ function MissionControl({initialMissions}) {
                             <div>
                                 <MissionAction
                                     missionId={id}
-                                    updatedStatus={MissionStatus}
+                                    updateMissionStatus={MissionStatus}
                                 />
                             </div>
 
