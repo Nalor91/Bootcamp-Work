@@ -1,0 +1,78 @@
+.main-container 
+{
+    display: flex;
+    flex-direction: column;    
+    width: 100vw;
+    height: 100vh;
+    color: aliceblue;
+    background-color: #080313;
+}
+
+.title-container 
+{
+    margin: 20px;
+    text-align: center;
+}
+
+.game-container 
+{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.player, .attack, .enemy
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.player
+{
+    align-items: flex-start;
+    color: green;
+}
+
+.enemy
+{
+    align-items: flex-end;
+    color: red;
+}
+
+.score
+{
+    display: inline-flex;    
+}
+
+.attack button,
+.reset button
+{
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    color: white;
+    border: 10px solid red;
+    border-radius: 100%;
+    background-color: orange;    
+}
+
+.reset button
+{
+    border-color: white;
+    background-color: darkblue;    
+}
+
+.message-container
+{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    height: 100px;
+    margin: 50px;    
+    font-size: 24px;
+}
