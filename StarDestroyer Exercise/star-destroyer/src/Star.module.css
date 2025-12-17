@@ -1,0 +1,19 @@
+.star 
+{
+    position: absolute;
+    display: flex;
+    width: 10px;
+    height: 10px;
+    align-items: center;
+    color: rgb(230, 226, 31);
+    border-radius: 50%;
+    font-size: 20px;
+    transition: transform 2s;
+    cursor: pointer;
+}
+
+.star:focus
+{
+    outline: none;
+    
+}
