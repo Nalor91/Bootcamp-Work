@@ -1,0 +1,15 @@
+.itemContainer
+{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;    
+}
+
+.itemContainer:last-child
+{
+    margin-bottom: 20px;
+}
