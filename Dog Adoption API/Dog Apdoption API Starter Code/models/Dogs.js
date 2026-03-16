@@ -18,5 +18,11 @@ const dogSchema = new mongoose.Schema({
     required: true
   }
 });
+
+dogSchema.statics.register = async function(name, breed, age, description) {
+  const dog = await this.create({ name, breed, age, description });
+  return dog;
+};
+
 const Dog = mongoose.model('dog', dogSchema);
 module.exports = Dog;

@@ -1,7 +1,9 @@
 //import dependencies
 const express = require("express");
 const authRoutes = require("./routes/authRoutes");
+const dogRoutes = require("./routes/dogRoutes");
 const cookieParser = require("cookie-parser");
+const {checkDog} = require("./middleware/dogMiddleware");
 const {requireAuth, checkUser} = require("./middleware/authMiddleware");
 const connectDB = require("./db");
 
@@ -12,6 +14,8 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.json());
 app.use(cookieParser());
+app.use(dogRoutes);
+app.use(authRoutes);
 
 
 //set view engine
@@ -30,9 +34,11 @@ startServer();
 
 //routes
 app.get("/", checkUser);
+app.get('/listed', checkDog);
 app.get("/", (req, res) => res.render("home"));
 app.get('/doggos', requireAuth, (req, res) => res.render('doggos'));
 app.get('/adopted', requireAuth, (req, res) => res.render('adopted'));
 app.get('/listed', requireAuth, (req, res) => res.render('listed'));
 app.get('/register', requireAuth, (req, res) => res.render('register'));
-app.use(authRoutes);
+
+

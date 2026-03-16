@@ -1,12 +1,27 @@
 <%- include('partials.ejs/header.ejs'); -%>
-<h1>Our Doggos</h1>
-<div class="dog-list">
-  <% dogs.forEach(dog => { %>
-    <div class="dog-card">
-      <h2><%= dog.name %></h2>
-      <p><strong>Breed:</strong> <%= dog.breed %></p>
-      <p><strong>Age:</strong> <%= dog.age %> years</p>
-      <p><strong>Description:</strong> <%= dog.description %></p>
-    </div>
-  <% }) %>
+
+    <head>
+        <title>Listed Dogs</title>
+    </head>
+    <body>
+        <h1>Dogs</h1>
+
+        <% if (dogs > 0) { %>
+            <ul>
+                <% dogs.forEach(dog => { %>
+                    <li>
+                        <strong>Name:</strong> <%= dog.name %>, 
+                        <strong>Breed:</strong> <%= dog.breed %>, 
+                        <strong>Age:</strong> <%= dog.age %>, 
+                        <strong>Description:</strong> <%= dog.description %>
+                    </li>
+            
+                }); %>
+            </ul>
+        <% } else { %>
+            <p>No dogs listed.</p>
+        <% } %>
+        <button type="button" onclick="window.location.href='/doggos'">Back</button>
+    </body>
+
 <%- include('partials.ejs/footer.ejs'); -%>

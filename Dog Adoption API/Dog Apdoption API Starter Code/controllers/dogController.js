@@ -1,40 +1,29 @@
 const dogData = require('../models/Dogs');
 
-const handleError = (err) => {
-    console.log(err.message, err.code);
-    let errors = {name: '', breed: '', age: '', description: ''};
+module.exports.list_get = async (req, res) => {
+    res.render('listed');
+}
 
-    if (err.code === 11000) {
-        errors.name = 'That dog is already registered';
+module.exports.register_get = async (req, res) => {
+    res.render('register');
     }
 
-    if (err.message.includes('dog validation failed')) {
-        Object.values(err.errors).forEach(({properties}) => {
-            errors[properties.path] = properties.message;
-        });
-    }
-    return errors;
-};
-
-module.exports.createDog = async (req, res) => {
-    const {name, breed, age, image} = req.body;
-
+module.exports.register_post = async (req, res) => {
+    const {name, breed, age, description} = req.body;
     try {
         const dog = await dogData.create({name, breed, age, description});
         res.status(201).json({dog: dog._id});
-    }
-    catch (err) {
-        const errors = handleError(err);
-        res.status(400).json({errors});
+    } catch (err) {
+        res.status(400).json({error: err.message});
     }
 };
 
-module.exports.getDogs = async (req, res) => {
+module.exports.deleteDog = async (req, res) => {
+    const {id} = req.params;
     try {
-        const dogs = await dogData.find({});
-        res.status(200).json(dogs);
-    }
-    catch (err) {
+        await dogData.findByIdAndDelete(id);
+        res.status(200).json({message: 'Dog deleted successfully'});
+    } catch (err) {
         res.status(400).json({error: err.message});
     }
 };
