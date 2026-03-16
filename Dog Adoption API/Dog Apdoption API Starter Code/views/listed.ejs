@@ -1,0 +1,12 @@
+<%- include('partials.ejs/header.ejs'); -%>
+<h1>Our Doggos</h1>
+<div class="dog-list">
+  <% dogs.forEach(dog => { %>
+    <div class="dog-card">
+      <h2><%= dog.name %></h2>
+      <p><strong>Breed:</strong> <%= dog.breed %></p>
+      <p><strong>Age:</strong> <%= dog.age %> years</p>
+      <p><strong>Description:</strong> <%= dog.description %></p>
+    </div>
+  <% }) %>
+<%- include('partials.ejs/footer.ejs'); -%>

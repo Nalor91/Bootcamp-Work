@@ -1,0 +1,48 @@
+<%- include('partials.ejs/header.ejs'); -%>
+
+<form action="/dogs" method="POST">
+    <input type="text" name="name" placeholder="Dog's name" required>
+    <input type="text" name="breed" placeholder="Dog's breed" required>
+    <input type="number" name="age" placeholder="Dog's age" required>
+    <textarea name="description" placeholder="Dog's description" required></textarea>
+    <button>Add Dog</button>
+    <button type="button" onclick="window.location.href='/doggos'">Back</button>
+  </form>
+
+  <script>
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        nameError.textContent = '';
+        breedError.textContent = ''; 
+        ageError.textContent = '';
+        descriptionError.textContent = '';
+
+        const name = form.name.value;
+        const breed = form.breed.value;
+        const age = form.age.value;
+        const description = form.description.value;
+
+        try {
+            const res = await fetch('/register', {
+                method: 'POST',
+                body: JSON.stringify({ name, breed, age, description }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            const data = await res.json();
+            console.log(data);
+
+            if (data.dog) {
+                location.assign('/listed');
+            }
+        } catch (err) {
+            console.error(err);
+        }
+        
+    });
+  </script>
+
+  <%- include('partials.ejs/footer.ejs'); -%>
