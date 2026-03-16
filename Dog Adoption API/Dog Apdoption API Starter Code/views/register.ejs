@@ -11,6 +11,10 @@
 
   <script>
     const form = document.querySelector('form');
+    const nameError = document.querySelector('.name.error');
+    const breedError = document.querySelector('.breed.error');
+    const ageError = document.querySelector('.age.error');
+    const descriptionError = document.querySelector('.description.error');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -34,6 +38,12 @@
 
             const data = await res.json();
             console.log(data);
+            if (data.errors) {
+                nameError.textContent = data.errors.name;
+                breedError.textContent = data.errors.breed; 
+                ageError.textContent = data.errors.age;
+                descriptionError.textContent = data.errors.description;
+            }
 
             if (data.dog) {
                 location.assign('/listed');
